@@ -1,0 +1,28 @@
+# pack-refs with: peeled fully-peeled 
+c8569b0ba1177ede7a9a0df647c91e4503851c5b refs/heads/bugfix/scope_in_multiple_partials
+2a93bcc08e8d96e1094aa8ccbee2fffb49ab9465 refs/heads/empty-view-folder-bug
+e670ddf5c3ab02efa49e263b08d16d49a3aafcc7 refs/heads/mailer-to-rspec-dgm
+182bdc83782af5a1922f092728f813fcde660ac7 refs/heads/master
+af8ce336d0524fd854d2cf93b7740f2277547931 refs/heads/partial-bugfix
+84947d4cfe95eeba5cff711762a90a09344cea44 refs/heads/release
+93dd204fd78ebc1800edddd329b472d57323e559 refs/heads/ui-bindings
+3294fd97fad8caa7fdc544f29f010605d3c2888c refs/tags/v0.10.0
+4bfd5fd4bdf0e5dfd4a1e40a1f988e9b1b0c09cc refs/tags/v0.10.1
+687b1756e0a00ac1aa439cdfb79874386b573b02 refs/tags/v0.6.1
+^700750115c151e34864c68892c767f78bf4466a5
+5284dd64715f00005ba7811bb56245fb56f81bfb refs/tags/v0.6.2
+^65726613f09df826241bcb49722a2de6e04ebd83
+f71626bdfce1bdaafdd248af50c2a6b7c8314bcb refs/tags/v0.6.3
+^6f073a5e245692d1a1d80a9109b794b685188e7b
+4000ce19845461c427a13376f4c53760a87d31c0 refs/tags/v0.7.0
+^0bfedf0dd02c3bd5fb95fa6d21321e4d7df65458
+b680c53972e021bca9c3bd271dcfeb449cce6fae refs/tags/v0.7.1
+^d5ef9f4188599bdd22a5a8c8157e528b54c92f89
+ee055d3ed946dfb033cf1c176a9e79053e0b0041 refs/tags/v0.8.0
+^2c68f75eba435123608effee1f0459ea0e63f89f
+4dd368b0cd8e2bd3680c4295f0c6617cabc1aaa1 refs/tags/v0.8rc1
+^7873e06f1a5be0fc1625c202c77f15334e4413a3
+6848be40df0b504d3303e6ee21d03f432cb1037d refs/tags/v0.9.0
+^9885bb3943dd4c43747f5d4026c60ce8a25b3db9
+8cc1fb23dc3876ddcbea2351be440933ee33ef3a refs/tags/v0.9.1
+^78517c8ac69fe1ac8b1d5a28f53f827992ca27cb

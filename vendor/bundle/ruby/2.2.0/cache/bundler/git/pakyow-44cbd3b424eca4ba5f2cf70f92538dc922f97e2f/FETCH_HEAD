@@ -1,0 +1,18 @@
+c8569b0ba1177ede7a9a0df647c91e4503851c5b		branch 'bugfix/scope_in_multiple_partials' of https://github.com/pakyow/pakyow
+2a93bcc08e8d96e1094aa8ccbee2fffb49ab9465		branch 'empty-view-folder-bug' of https://github.com/pakyow/pakyow
+e670ddf5c3ab02efa49e263b08d16d49a3aafcc7		branch 'mailer-to-rspec-dgm' of https://github.com/pakyow/pakyow
+182bdc83782af5a1922f092728f813fcde660ac7		branch 'master' of https://github.com/pakyow/pakyow
+af8ce336d0524fd854d2cf93b7740f2277547931		branch 'partial-bugfix' of https://github.com/pakyow/pakyow
+84947d4cfe95eeba5cff711762a90a09344cea44		branch 'release' of https://github.com/pakyow/pakyow
+93dd204fd78ebc1800edddd329b472d57323e559		branch 'ui-bindings' of https://github.com/pakyow/pakyow
+3294fd97fad8caa7fdc544f29f010605d3c2888c	not-for-merge	tag 'v0.10.0' of https://github.com/pakyow/pakyow
+4bfd5fd4bdf0e5dfd4a1e40a1f988e9b1b0c09cc	not-for-merge	tag 'v0.10.1' of https://github.com/pakyow/pakyow
+687b1756e0a00ac1aa439cdfb79874386b573b02	not-for-merge	tag 'v0.6.1' of https://github.com/pakyow/pakyow
+5284dd64715f00005ba7811bb56245fb56f81bfb	not-for-merge	tag 'v0.6.2' of https://github.com/pakyow/pakyow
+f71626bdfce1bdaafdd248af50c2a6b7c8314bcb	not-for-merge	tag 'v0.6.3' of https://github.com/pakyow/pakyow
+4000ce19845461c427a13376f4c53760a87d31c0	not-for-merge	tag 'v0.7.0' of https://github.com/pakyow/pakyow
+b680c53972e021bca9c3bd271dcfeb449cce6fae	not-for-merge	tag 'v0.7.1' of https://github.com/pakyow/pakyow
+ee055d3ed946dfb033cf1c176a9e79053e0b0041	not-for-merge	tag 'v0.8.0' of https://github.com/pakyow/pakyow
+4dd368b0cd8e2bd3680c4295f0c6617cabc1aaa1	not-for-merge	tag 'v0.8rc1' of https://github.com/pakyow/pakyow
+6848be40df0b504d3303e6ee21d03f432cb1037d	not-for-merge	tag 'v0.9.0' of https://github.com/pakyow/pakyow
+8cc1fb23dc3876ddcbea2351be440933ee33ef3a	not-for-merge	tag 'v0.9.1' of https://github.com/pakyow/pakyow
