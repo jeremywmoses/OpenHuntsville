@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 ruby "2.2.0"
-gem "pakyow", git: "https://github.com/pakyow/pakyow.git"
+gem "pakyow", github: "pakyow/pakyow"
 
 # application server
 gem "puma"
@@ -27,9 +27,11 @@ gem "rake"
 
 gem "bcrypt"
 
-## Integrate with Mandrill to send transactional emails
-gem "mandrill-api"
+## Integrate with Mailgun to send transactional emails
+gem 'mailgun-ruby'
 
 
 gem 'aws-sdk', '~> 2'
 gem "mini_magick"
+gem 'nokogiri'
+# gem 'yaml
