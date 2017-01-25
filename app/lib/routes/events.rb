@@ -37,12 +37,20 @@ Pakyow::App.routes(:events) do
         previous_event = Event.where("approved = true AND group_id = ? AND start_datetime < ?", approve_me.group_id, approve_me.start_datetime).order(:start_datetime).last
         instance_number = 1
         unless previous_event.nil?
-          #TODO: Need to rethink this. There could be a bug when the approval doesn't happen in order...
+          # TODO: Need to rethink this. There could be a bug when the approval doesn't happen in order...
           #      Same thing could happen with event creation if it doesn't happen sequentially; sigh
           instance_number = previous_event.instance_number + 1
         end
         approve_me.instance_number = instance_number
         approve_me.save
+
+        # Send an email to all admins of the selected group
+        group = Group.where("id = ?", approve_me.group_id).first
+        group.people().each { |person|
+          # Send approval email to group admins
+          send_email_template(person, :event_approval)
+        }
+
         if request.xhr?
           success = 'success'
         else
@@ -66,7 +74,7 @@ Pakyow::App.routes(:events) do
     end
 
     member do
-      #TODO: DELETE '/events/:events_id' route. This is a workaround
+      # TODO: DELETE '/events/:events_id' route. This is a workaround
       # GET ''/events/:events_id/delete'
       get 'delete' do
         event = Event.where("id = ?", params[:events_id]).first
@@ -129,7 +137,7 @@ Pakyow::App.routes(:events) do
       view.scope(:main_menu).apply(request)
     end
 
-    #POST '/events/'
+    # POST '/events/'
     action :create, :before => :is_event_manager do
       people = People[session[:people]]
       if people.nil?
@@ -157,7 +165,7 @@ Pakyow::App.routes(:events) do
       redirect '/events/manage'
     end
 
-    #PATCH '/events/:events_id'
+    # PATCH '/events/:events_id'
     action :update, :before => :is_event_manager do
       people = People[session[:people]]
       if people.nil?

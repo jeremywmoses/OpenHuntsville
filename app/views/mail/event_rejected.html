@@ -1,0 +1,21 @@
+---
+template: mail
+---
+<div data-scope="people" style="margin:40px;">
+	<h2><span data-prop="first_name"></span>,</h2>
+    <p>Sorry, your event has been rejected. You can find your event details below:</p>
+    <br /><br />
+    <p>
+        Name: <span data-prop="event_name"></span><br />
+        Description: <span data-prop="event_description"></span><br />
+        Start Time: <span data-prop="event_start_time"></span><br />
+        Duration: <span data-prop="event_duration"></span><br />
+        Venue: <span data-prop="event_venue"></span><br />
+        Group Name: <span data-prop="event_group_name"></span><br />
+    </p>
+
+    <p>Please contact <span data-prop="approved_by"></span> if you have any questions.</p>
+
+	<p>Thank you,</p>
+	<p>The <strong>#openHSV</strong> team</p>
+</div>

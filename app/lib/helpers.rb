@@ -229,9 +229,11 @@ module Pakyow::Helpers
   ### EMAIL
   ### ----------------------------
 
-  def send_email_template(person, email_partial, options = {})
+  def send_email_template(person, event email_partial, options = {})
     body = ''
     subject = ''
+
+    if event = nil
 
     to_email = person.email
 
@@ -245,7 +247,7 @@ module Pakyow::Helpers
     when :account_suspension
       presenter.view = store.view('mail/account_suspension')
       view.scope(:people).bind(person)
-      subject = 'Your #openHSV account has been suspended'
+      subject = 'Your #openHSV account has been suspended.'
     when :account_approval
       presenter.view = store.view('mail/account_approval')
       view.scope(:people).bind(person)
@@ -253,7 +255,22 @@ module Pakyow::Helpers
     when :account_creation
       presenter.view = store.view('mail/account_creation')
       view.scope(:people).bind(person)
-      subject = "Your #openHSV account is awaiting approval"
+      subject = "Your #openHSV account is awaiting approval."
+    end
+    when :event_created
+      presenter.view = store.view('mail/event_created')
+      view.scope(:events).bind(person)
+      subject = "Your event has been created."
+    end
+    when :event_approved
+      presenter.view = store.view('mail/event_approved')
+      view.scope(:events).bind(person)
+      subject = "Your event has been approved."
+    end
+    when :event_rejected
+      presenter.view = store.view('mail/event_rejected')
+      view.scope(:events).bind(person)
+      subject = "Your event has been rejcted."
     end
 
     send_email(person, from_email, view.to_html, subject)
