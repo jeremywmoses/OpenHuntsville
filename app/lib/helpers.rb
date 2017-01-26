@@ -252,15 +252,12 @@ module Pakyow::Helpers
     when :account_creation
       presenter.view = store.view('mail/account_creation')
       subject = "Your #openHSV account is awaiting approval."
-    end
     when :event_created
       presenter.view = store.view('mail/event_created')
       subject = "Your #openHSV event is awaiting approval."
-    end
-    when :event_approved
+    when :event_approval
       presenter.view = store.view('mail/event_approval'))
       subject = "Congratulations! Your #openHSV event has been approved!"
-    end
     when :event_rejected
       presenter.view = store.view('mail/event_rejected')
       subject = "Your #openHSV event has been rejcted."
