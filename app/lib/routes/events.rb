@@ -48,7 +48,7 @@ Pakyow::App.routes(:events) do
         group = Group.where("id = ?", approve_me.group_id).first
         group.people().each { |person|
           # Send approval email to group admins
-          send_email_template(person, :event_approval)
+          send_email_template(person, :event_approval, approve_me)
         }
 
         if request.xhr?

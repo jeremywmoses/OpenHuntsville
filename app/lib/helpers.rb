@@ -229,13 +229,12 @@ module Pakyow::Helpers
   ### EMAIL
   ### ----------------------------
 
-  def send_email_template(person, event email_partial, options = {})
+  def send_email_template(person, email_partial, event = nil, options = {})
     body = ''
     subject = ''
 
-    if event = nil
-
-    to_email = person.email
+    #to_email = person.email
+    to_email = "tyler@newleafdigital.org"
 
     if options[:from_email].nil?
       from_email = 'donotreply@openhsv.com'
@@ -246,31 +245,33 @@ module Pakyow::Helpers
     case email_partial
     when :account_suspension
       presenter.view = store.view('mail/account_suspension')
-      view.scope(:people).bind(person)
       subject = 'Your #openHSV account has been suspended.'
     when :account_approval
       presenter.view = store.view('mail/account_approval')
-      view.scope(:people).bind(person)
       subject = 'Congratulations! Your #openHSV account has been approved!'
     when :account_creation
       presenter.view = store.view('mail/account_creation')
-      view.scope(:people).bind(person)
       subject = "Your #openHSV account is awaiting approval."
     end
     when :event_created
       presenter.view = store.view('mail/event_created')
-      view.scope(:events).bind(person)
-      subject = "Your event has been created."
+      subject = "Your #openHSV event is awaiting approval."
     end
     when :event_approved
-      presenter.view = store.view('mail/event_approved')
-      view.scope(:events).bind(person)
-      subject = "Your event has been approved."
+      presenter.view = store.view('mail/event_approval'))
+      subject = "Congratulations! Your #openHSV event has been approved!"
     end
     when :event_rejected
       presenter.view = store.view('mail/event_rejected')
-      view.scope(:events).bind(person)
-      subject = "Your event has been rejcted."
+      subject = "Your #openHSV event has been rejcted."
+    end
+
+    unless person.nil?
+      view.scope(:people).bind(person)
+    end
+
+    unless event.nil?
+      view.scope(:events).bind(event)
     end
 
     send_email(person, from_email, view.to_html, subject)
