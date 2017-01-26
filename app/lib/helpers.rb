@@ -256,7 +256,7 @@ module Pakyow::Helpers
       presenter.view = store.view('mail/event_created')
       subject = "Your #openHSV event is awaiting approval."
     when :event_approval
-      presenter.view = store.view('mail/event_approval'))
+      presenter.view = store.view('mail/event_approval')
       subject = "Congratulations! Your #openHSV event has been approved!"
     when :event_rejected
       presenter.view = store.view('mail/event_rejected')
