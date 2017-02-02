@@ -234,7 +234,8 @@ module Pakyow::Helpers
     subject = ''
 
     #to_email = person.email
-    to_email = "tyler@newleafdigital.org"
+    to_email = 'tyler@newleafdigital.org'
+    puts to_email
 
     if options[:from_email].nil?
       from_email = 'donotreply@openhsv.com'
@@ -255,19 +256,24 @@ module Pakyow::Helpers
     when :event_created
       presenter.view = store.view('mail/event_created')
       subject = "Your #openHSV event is awaiting approval."
+      puts subject
     when :event_approval
       presenter.view = store.view('mail/event_approval')
       subject = "Congratulations! Your #openHSV event has been approved!"
+      puts subject
     when :event_rejected
       presenter.view = store.view('mail/event_rejected')
       subject = "Your #openHSV event has been rejcted."
+      puts subject
     end
 
     unless person.nil?
+      puts "bind person"
       view.scope(:people).bind(person)
     end
 
     unless event.nil?
+      puts "bind events"
       view.scope(:events).bind(event)
     end
 
@@ -275,8 +281,11 @@ module Pakyow::Helpers
   end # send_email_template(person, email_partial, options = {})
 
   def send_email(person, from_email, body, subject)
+    puts ENV['RACK_ENV']
     unless ENV['RACK_ENV'] == 'development'
       recipient = "#{person.first_name} #{person.last_name} <#{person.email}>"
+
+      puts "sending email"
 
       # First, instantiate the Mailgun Client with your API key
       mg_client = Mailgun::Client.new ENV['MAILGUN_PRIVATE']
@@ -299,6 +308,8 @@ module Pakyow::Helpers
       # Send your message through the client
       mg_client.send_message 'sandboxa148f93a5c5f4813a81365d1b873ee8f.mailgun.org', message_params
     end # unless ENV['RACK_ENV'] == 'development'
+
+    puts "email sent"
   end # send_email(person, from_email, body, subject)
 
   def email_us(subject, body)
