@@ -390,6 +390,16 @@ module Pakyow::Helpers
     return image
   end
 
+  def upload_image_to_Aws(image_basename, image_filename)
+    # Upload to S3.
+    s3 = Aws::S3::Resource.new(region: 'us-east-1')
+    s3.bucket('openhsv.com').object('website-uploads/' + image_basename).upload_file(image_filename, acl:'public-read')
+    
+    # Remove the image from /tmp after uploading it.
+    FileUtils.rm(image_filename)
+    return 'https://s3.amazonaws.com/openhsv.com/website-uploads/' + image_basename
+  end
+
   def slug_contains_invalid(string)
     retval = false
     if string.include? " "
