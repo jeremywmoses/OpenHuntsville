@@ -198,6 +198,7 @@ Pakyow::App.routes(:groups) do
       if logged_in_user_is_manager_of_group(group) == false
         redirect "/errors/403"
       end
+      
       unless group.nil?
         #if adding group admins, only update group admins
         unless params[:groups][:add_group_admin].nil? || params[:groups][:add_group_admin].length == 0
@@ -212,6 +213,26 @@ Pakyow::App.routes(:groups) do
           group.categories = Sequel::Postgres::JSONHash.new(category_array)
           group.flyer_category = params[:groups][:flyer_category]
           group.flyer_fa_icon = params[:groups][:flyer_fa_icon]
+
+          if params.has_key?('tempimage')
+            unless params['tempimage'].nil? || params['tempimage'].length == 0
+              image_basename = params['tempimage']
+              image_filename = "/tmp/#{params['tempimage']}"
+
+              if File.exists? image_filename
+                # Get the image size.
+                image = MiniMagick::Image.open(image_filename)
+                
+                # Upload to Amazon S3
+                group.image_url = upload_image_to_Aws(image_basename, image_filename)
+              else
+                pp "File does not exist"
+              end
+            else
+              puts "TEMPIMAGE NIL"
+            end
+          end
+          
           group.save
         end
         redirect '/groups/' + params[:groups][:id].to_s + '/edit'
