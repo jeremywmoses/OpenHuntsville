@@ -476,6 +476,8 @@ Pakyow::App.routes(:people) do
 
 
       if params.has_key?('tempimage')
+        puts params
+
         unless params['tempimage'].nil? || params['tempimage'].length == 0
           image_basename = params['tempimage']
           image_filename = "/tmp/#{params['tempimage']}"
@@ -485,11 +487,6 @@ Pakyow::App.routes(:people) do
             image = MiniMagick::Image.open(image_filename)
 
             # Upload to S3.
-            #s3 = Aws::S3::Resource.new(region: 'us-east-1')
-            #s3.bucket('openhsv.com').object('website-uploads/' + image_basename).upload_file(image_filename, acl:'public-read')
-            # Remove the image from /tmp after uploading it.
-            #FileUtils.rm(image_filename)
-            #people.image_url = 'https://s3.amazonaws.com/openhsv.com/website-uploads/' + image_basename
             people.image_url = upload_image_to_Aws(image_basename, image_filename)
           else
             pp "File does not exist"

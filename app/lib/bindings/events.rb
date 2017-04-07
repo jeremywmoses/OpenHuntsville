@@ -202,5 +202,9 @@ Pakyow::App.bindings :events do
 			:content => bindable.flyer_fa_icon
 			}
 		end
+
+		binding(:image_url) do
+			bindable.image_url
+		end
   end
 end

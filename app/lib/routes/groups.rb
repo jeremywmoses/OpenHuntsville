@@ -215,6 +215,8 @@ Pakyow::App.routes(:groups) do
           group.flyer_fa_icon = params[:groups][:flyer_fa_icon]
 
           if params.has_key?('tempimage')
+            pp params
+
             unless params['tempimage'].nil? || params['tempimage'].length == 0
               image_basename = params['tempimage']
               image_filename = "/tmp/#{params['tempimage']}"
