@@ -47,11 +47,11 @@ Pakyow::App.bindings :events do
       }
     end
 
-    binding(:description) do
-      {
-        :content => bindable.description
-      }
-    end
+		binding(:description) do
+			{
+				:content => bindable.description
+			}
+		end
 
     binding(:summary) do
       {
@@ -203,8 +203,21 @@ Pakyow::App.bindings :events do
 			}
 		end
 
+<<<<<<< HEAD
 		binding(:image_url) do
 			bindable.image_url
+=======
+		binding(:created_by_updated_by) do
+			creator = People.where("id = ?", bindable.created_by).first
+			updator = People.where("id = ?", bindable.updated_by).first
+			content = ""
+			unless creator.nil? || updator.nil?
+				content = "This event was created by " + creator.first_name + " " + creator.last_name + " on " + bindable.created_at.in_time_zone("Central Time (US & Canada)").strftime('%b %d, %Y %I:%M %p') + " and updated by " + updator.first_name + " " + updator.last_name + " on " + bindable.updated_at.in_time_zone("Central Time (US & Canada)").strftime('%b %d, %Y %I:%M %p')
+			end
+			{
+				:content => content
+			}
+>>>>>>> master
 		end
   end
 end
